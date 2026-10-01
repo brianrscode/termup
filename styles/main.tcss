@@ -1,0 +1,56 @@
+Categories {
+    border: solid $primary 50%;
+    width: 100%;
+    height: auto;
+
+}
+RadioSet, RadioButton {
+    width: 100%;
+    height: auto;
+}
+Actions {
+    border: solid $primary 50%;
+    width: 100%;
+    height: auto;
+}
+
+DataTable {
+    content-align: center middle;
+    margin-top: 1;
+    border: solid $primary 50%;
+    width: 100%;
+    height: auto;
+}
+
+
+Button {
+    margin: 1 0 0 2;
+    color: #FBFBFB;
+    background: $primary;
+}
+
+VerticalGroup#left-side {
+    border: solid $primary 50%;
+    width: auto;
+    min-width: 25vw;
+    height: auto;
+    # min-height: 50vh;
+}
+
+VerticalScroll#right-side {
+    border: solid $primary 50%;
+    padding-left: 2;
+    padding-right: 2;
+    min-width: 70vw;
+    min-height: 50vh;
+    # max-height: 50vh;
+}
+
+#app-header {
+    width: 100%;
+    content-align: center middle;
+    text-align: center;
+    color: $primary;
+    # color: $text;
+    # background: $primary;
+}
