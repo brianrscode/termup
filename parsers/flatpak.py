@@ -1,11 +1,14 @@
-from models import PackageItem
 from commands import run_command
+from models import PackageItem
+
 from .parser import Parser
 
 
 class FlatpakParser(Parser):
     async def parse(self) -> list[PackageItem]:
-        paquetes = await run_command("flatpak remote-ls --updates --app --columns=application,version")
+        paquetes = await run_command(
+            "flatpak remote-ls --updates --app --columns=application,version"
+        )
         pkgs_list: list[PackageItem] = []
         for paquete in paquetes:
             if not paquete.strip():

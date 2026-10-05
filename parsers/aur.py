@@ -1,5 +1,6 @@
-from models import PackageItem
 from commands import run_command
+from models import PackageItem
+
 from .parser import Parser
 
 
@@ -13,7 +14,12 @@ class AURParser(Parser):
             datos = paquete.split()
             if len(datos) >= 1:
                 pkgs_list.append(
-                    PackageItem(name=datos[0], old_version=datos[1], new_version=datos[3], origin="aur")
+                    PackageItem(
+                        name=datos[0],
+                        old_version=datos[1],
+                        new_version=datos[3],
+                        origin="aur",
+                    )
                 )
         return pkgs_list
-        
+

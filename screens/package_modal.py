@@ -1,14 +1,13 @@
 import asyncio
-from textual.containers import HorizontalGroup
-from textual.screen import ModalScreen
-from textual.app import ComposeResult
-from textual.containers import Vertical
-from textual.widgets import Static, Button
+
 from textual import on
+from textual.app import ComposeResult
+from textual.containers import HorizontalGroup, Vertical
+from textual.screen import ModalScreen
+from textual.widgets import Button, Static
 
 
 class PackageModal(ModalScreen):
-    
     def __init__(self, package_name: str, package_origin: str) -> None:
         super().__init__()
         self.package_name = package_name
@@ -16,17 +15,18 @@ class PackageModal(ModalScreen):
 
     def compose(self) -> ComposeResult:
         with Vertical(id="modal_dialog"):
-            yield Static(f"Package selected for update:\n\n[bold cyan]{self.package_name}[/bold cyan]")
+            yield Static(
+                f"Package selected for update:\n\n[bold cyan]{self.package_name}[/bold cyan]"
+            )
             yield HorizontalGroup(
                 Button("Actualizar", variant="primary", id="upgrade_btn"),
-                Button("Cancelar", variant="primary", id="close_btn")
+                Button("Cancelar", variant="primary", id="close_btn"),
             )
 
     @on(Button.Pressed, "#close_btn")
     def close_modal(self) -> None:
         self.dismiss()
 
- 
     @on(Button.Pressed, "#upgrade_btn")
     async def upgrade_package(self) -> None:
 
@@ -56,4 +56,3 @@ class PackageModal(ModalScreen):
                 f"{self.package_name}; read -rp 'Press Enter to close...'",
             )
             self.dismiss()
-                

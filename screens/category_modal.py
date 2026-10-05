@@ -1,24 +1,25 @@
 import asyncio
-from textual.containers import HorizontalGroup
-from textual.screen import ModalScreen
-from textual.app import ComposeResult
-from textual.containers import Vertical
-from textual.widgets import Static, Button
+
 from textual import on
+from textual.app import ComposeResult
+from textual.containers import HorizontalGroup, Vertical
+from textual.screen import ModalScreen
+from textual.widgets import Button, Static
 
 
 class CategoryModal(ModalScreen):
-    
     def __init__(self, category: str) -> None:
         super().__init__()
         self.category = category
-    
+
     def compose(self) -> ComposeResult:
         with Vertical(id="modal_dialog"):
-            yield Static(f"Category selected for updating:\n\n[bold cyan]{self.category}[/bold cyan]")
+            yield Static(
+                f"Category selected for updating:\n\n[bold cyan]{self.category}[/bold cyan]"
+            )
             yield HorizontalGroup(
                 Button("Update", variant="primary", id="upgrade_btn"),
-                Button("Cancel", variant="primary", id="close_btn")
+                Button("Cancel", variant="primary", id="close_btn"),
             )
 
     @on(Button.Pressed, "#upgrade_btn")
